@@ -9,7 +9,8 @@ Deliverables:
     3. Your own image encoded with hidden secret text!
 """
 # TODO: Run `pip3 install Pillow` before running the code.
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
+from PIL.ImagePalette import raw
 
 
 def decode_image(path_to_png):
@@ -28,7 +29,11 @@ def decode_image(path_to_png):
     x_size, y_size = encoded_image.size
 
     # TODO: Using the variables declared above, replace `print(red_channel)` with a complete implementation:
-    print(red_channel)  # Start coding here!
+    # Start coding here!
+    for x in range(x_size):
+        for y in range(y_size):
+            pass
+
     # Step 1: Read first 3 pixels
     # Step 2: Even = 0, Odd = 1, Sets of 8 (Binary)
     # Step 3: Binary value -> decimal -> ASCII
@@ -36,6 +41,8 @@ def decode_image(path_to_png):
 
     # DO NOT MODIFY. Save the decoded image to disk:
     decoded_image.save("decoded_image.png")
+
+    pass
 
 
 def encode_image(path_to_png):
