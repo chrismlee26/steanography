@@ -32,32 +32,17 @@ def decode_image(path_to_png):
     # Start coding here!
     for x in range(x_size):
         for y in range(y_size):
-            pass
+            buffer = red_channel.getpixel((x, y))
 
-    # Step 1: Read first 3 pixels
-    # Step 2: Even = 0, Odd = 1, Sets of 8 (Binary)
-    # Step 3: Binary value -> decimal -> ASCII
-    # Step 4: When 9th value == even, stop
+            binary = bin(buffer)
+            lsb = binary[len(binary) - 1]
+            lsb = int(lsb)
 
-    # DO NOT MODIFY. Save the decoded image to disk:
+            rgb = (255, 255, 255) if lsb == 0 else (0, 0, 0)
+
+            decoded_image.putpixel((x, y), rgb)
+
     decoded_image.save("decoded_image.png")
 
-    pass
 
-
-def encode_image(path_to_png):
-    """
-    TODO: Add docstring and complete implementation.
-    """
-    pass
-    # Step 1: Each character, ASCII converted into 8-bit binary
-    # Step 2: Read 3 pixels at a time, 3*3 = 9 RBG Values
-    # Step 3: RBG and binary compared. If binary == 1, RBG = Odd, If Binary == 0, RBG = Even
-    # Step 4: Check 9th value == odd = continue, even = stop
-
-
-def write_text(text_to_write):
-    """
-    TODO: Add docstring and complete implementation.
-    """
-    pass
+decode_image("./static/encoded_sample.png")
